@@ -1,0 +1,38 @@
+apple mac container notes
+
+macOS 26.3
+https://github.com/apple/container 0.9.0 c791052
+https://github.com/trailofbits/claude-code-config 40b70ea27ea6f2b1a8b4d4ef03875499b1c45455
+https://github.com/trailofbits/claude-code-devcontainer c7ec556ae6c6a7e79066c115525422beebe85b19
+
+I ran out of container memory on the first build attempt.
+
+container builder stop
+container builder start -c 4 -m 8g
+
+container build -t claude-devcontainer
+
+This works.
+container run -it --rm \
+--mount "source=.,target=/workspace" \
+--mount "source=~/.claude,target=/home/vscode/.claude" \
+claude-devcontainer
+
+But I can't seem to mount in ~/.claude.json.
+After manually copying the host file to /home/vscode/.claude.json, claude seems to know more about me,
+but it thinks I am not logged in. That is likely a result of the user and environment being different.
+
+My subscript doesn't have an API key, so I needed to login in the container and save the
+~/.claude.json file for manually copying it into subsequent containers.
+Claude has me logged in after spinning up a new container and copying in the .claude.json file.
+Now I need to figure out how to automate that.
+
+Maybe use .zshrc and update launch script to use zsh by default.
+This approach works for both the .claude.json and runing the post_install.py script.
+
+Localhost comms do not seem to survive a reboot.
+Manually running sudo container system dns rm/create gets it working again.
+https://github.com/apple/container/blob/main/docs/how-to.md#access-a-host-service-from-a-container
+
+
+

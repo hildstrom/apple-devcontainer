@@ -1,0 +1,25 @@
+# for local llm via lm studio
+claude-local() {
+  ANTHROPIC_BASE_URL=http://203.0.113.113:1234 \
+  ANTHROPIC_AUTH_TOKEN=lmstudio \
+  CLAUDE_CODE_DISABLE_NONESSENTIAL_TRAFFIC=1 \
+  CLAUDE_CODE_ENABLE_TELEMETRY=0 \
+  CLAUDE_CODE_ATTRIBUTION_HEADER=0 \
+  claude \
+  --model qwen/qwen3-coder-next \
+  --exclude-dynamic-system-prompt-sections \
+  "$@"
+}
+
+# Make sure claude login session is copied in properly
+cp ~/.claude/claude.json.adevc ~/.claude.json
+
+# Run the post install script
+uv run --no-project /opt/post_install.py
+
+# Copy codex binaries
+rm -rf ~/.codex/packages
+cp -a ~/.codex-bin/packages ~/.codex/
+rm -rf ~/.codex/tmp
+cp -a ~/.codex-bin/tmp ~/.codex/
+

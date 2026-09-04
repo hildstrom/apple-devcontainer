@@ -1,0 +1,26 @@
+{
+  "claude-plugins-official": {
+    "source": {
+      "source": "github",
+      "repo": "anthropics/claude-plugins-official"
+    },
+    "installLocation": "/home/vscode/.claude/plugins/marketplaces/claude-plugins-official",
+    "lastUpdated": "2026-04-16T08:16:22.337Z"
+  },
+  "tob-skills": {
+    "source": {
+      "source": "github",
+      "repo": "trailofbits/skills"
+    },
+    "installLocation": "/home/vscode/.claude/plugins/marketplaces/tob-skills",
+    "lastUpdated": "2026-04-16T08:16:22.337Z"
+  },
+  "tob-skills-curated": {
+    "source": {
+      "source": "github",
+      "repo": "trailofbits/skills-curated"
+    },
+    "installLocation": "/home/vscode/.claude/plugins/marketplaces/tob-skills-curated",
+    "lastUpdated": "2026-04-16T08:16:22.337Z"
+  }
+}
