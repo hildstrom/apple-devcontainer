@@ -1,4 +1,4 @@
-# Claude Code Apple Devcontainer
+# Apple Devcontainer
 
 A devcontainer setup for running [Claude Code](https://claude.com/claude-code) (and
 optionally [Codex CLI](https://github.com/openai/codex)) on macOS using
