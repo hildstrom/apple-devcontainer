@@ -7,45 +7,9 @@ if [ $? -ne 0 ]; then
   exit 1
 fi
 
-# clone/pull claude-code-config
-if [ -d claude-code-config ]; then
-  git -C claude-code-config restore .
-  git -C claude-code-config checkout main
-  git -C claude-code-config pull
-else
-  git clone https://github.com/trailofbits/claude-code-config.git
-fi
-git -C claude-code-config checkout 7db11a2803d304d294ebace78c0687e701385947
-
-# clone/pull claude-code-devcontainer
-if [ -d claude-code-devcontainer ]; then
-  git -C claude-code-devcontainer restore .
-  git -C claude-code-devcontainer checkout main
-  git -C claude-code-devcontainer pull
-else
-  git clone https://github.com/trailofbits/claude-code-devcontainer.git
-fi
-git -C claude-code-devcontainer checkout 48df2ad80d33216d04354088704591fb8ceec6b0
-
-# clone/pull skills
-if [ -d skills ]; then
-  git -C skills restore .
-  git -C skills checkout main
-  git -C skills pull
-else
-  git clone https://github.com/trailofbits/skills.git
-fi
-git -C skills checkout 1efb11a08f9865f4e33392133328e5f1404db05b
-
-# clone/pull skills-curated
-if [ -d skills-curated ]; then
-  git -C skills-curated restore .
-  git -C skills-curated checkout main
-  git -C skills-curated pull
-else
-  git clone https://github.com/trailofbits/skills-curated.git
-fi
-git -C skills-curated checkout 022fa0948818c9f2f738a428f4546cc65c427767
+# fetch dependency repos, pinned to the commits recorded in .gitmodules
+git submodule foreach --quiet git restore .
+git submodule update --init
 
 # patch claude-code-devcontainer and copy necessary files
 patch claude-code-devcontainer/Dockerfile Dockerfile.patch

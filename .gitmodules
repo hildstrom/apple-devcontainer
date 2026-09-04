@@ -1,0 +1,12 @@
+[submodule "claude-code-config"]
+	path = claude-code-config
+	url = https://github.com/trailofbits/claude-code-config.git
+[submodule "claude-code-devcontainer"]
+	path = claude-code-devcontainer
+	url = https://github.com/trailofbits/claude-code-devcontainer.git
+[submodule "skills"]
+	path = skills
+	url = https://github.com/trailofbits/skills.git
+[submodule "skills-curated"]
+	path = skills-curated
+	url = https://github.com/trailofbits/skills-curated.git

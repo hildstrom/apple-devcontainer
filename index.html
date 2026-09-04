@@ -33,10 +33,9 @@
     <h2>Instructions</h2>
     <ol>
       <li>Make sure you are on macOS >= 26.3 and Apple container >= 0.9.0</li>
-      <li>Download the claude-code-apple-devcontainer-YYYYMMDD.zip file</li>
-      <li>Unzip it and cd claude-code-apple-devcontainer</li>
+      <li>Clone the claude-code-apple-devcontainer repo and cd into it</li>
       <li>Review the build-adevc.sh script before executing it</li>
-      <li>./build-adevc.sh</li>
+      <li>./build-adevc.sh (this also fetches the pinned claude-code-config, claude-code-devcontainer, skills, and skills-curated git submodules)</li>
       <li>Edit your ~/.zshrc file and add "alias adevc=/path/to/your/adevc.sh"</li>
       <li>cd /path/to/your/project/directory</li>
       <li>adevc</li>
