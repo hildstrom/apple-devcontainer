@@ -1,14 +1,24 @@
-# for local llm via lm studio
+# for claude with local llm via lm studio
 claude-local() {
   ANTHROPIC_BASE_URL=http://203.0.113.113:1234 \
   ANTHROPIC_AUTH_TOKEN=lmstudio \
   CLAUDE_CODE_DISABLE_NONESSENTIAL_TRAFFIC=1 \
   CLAUDE_CODE_ENABLE_TELEMETRY=0 \
   CLAUDE_CODE_ATTRIBUTION_HEADER=0 \
+  CLAUDE_CODE_MAX_CONTEXT_TOKENS=256000 \
   claude \
   --model qwen/qwen3-coder-next \
   --exclude-dynamic-system-prompt-sections \
   "$@"
+}
+
+# for codex with local llm via lm studio
+codex-local() {
+  codex \
+    --oss \
+    --model qwen/qwen3-coder-next \
+    --config model_context_window=256000 \
+    "$@"
 }
 
 # Make sure claude login session is copied in properly
